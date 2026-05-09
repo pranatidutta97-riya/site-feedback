@@ -109,7 +109,7 @@ const SiteFeedback = () => {
                         <div className="col-md-6">
                             <div className="box_wrap mt-4">
                                 <div className="d-flex mt-4">
-                                    <h3 className="text-white">Score</h3>
+                                    <h3 className="text-white">Score - </h3>
                                     <div>{feedback.score}</div>
                                 </div>
                                 <div className="mt-3">
@@ -129,14 +129,14 @@ const SiteFeedback = () => {
                                 )}
                                 <hr />
                                 <h4 className="text-center">Severity Distribution</h4>
-                                    {feedback.severity && (
-                                       <div>{Object.keys(feedback.severity).map((key) => (
-                                            <div key={key}>
-                                                <strong>{key}:</strong> {feedback.severity[key]}
-                                            </div>
-                                        ))}
+                                {feedback.severity && (
+                                    <div>{Object.keys(feedback.severity).map((key) => (
+                                        <div key={key}>
+                                            <strong>{key}:</strong> {feedback.severity[key]}
                                         </div>
-                                    )}
+                                    ))}
+                                    </div>
+                                )}
                             </div>
                         </div>
                         <div className="col-md-6">
@@ -155,6 +155,21 @@ const SiteFeedback = () => {
                                         <Pie data={severityChartData} />
                                     )}
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="box_wrap mt-4">
+                                <h4 className="text-center">Our Recommendations</h4>
+                                {feedback.recommendations && (
+                                    <div>{Object.keys(feedback.recommendations).map((key) => (
+                                        <div key={key} className='recom_box'>
+                                            <strong>{key}:</strong> {feedback.recommendations[key]}
+                                        </div>
+                                    ))}
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
